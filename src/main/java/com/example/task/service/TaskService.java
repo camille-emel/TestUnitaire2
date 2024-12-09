@@ -12,9 +12,11 @@ public class TaskService{
     private int currentTaskIndex = 0;
 
     TaskService(){
+        addTask("task");
+        addTask("toto");
     }
 
-    void addTask(String description){
+    public void addTask(String description){
         Task task = new Task(currentTaskIndex++, description);
         tasks.add(task);
     }

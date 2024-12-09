@@ -3,9 +3,7 @@ import com.example.task.service.Task;
 
 import com.example.task.service.TaskService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,11 +20,17 @@ public class TaskController {
 
     @GetMapping("/hello")
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Welcome to the Task Manager API!");
+        return ResponseEntity.ok("Welcome to the Task Manager API! toto");
     }
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks() {
         return ResponseEntity.ok(taskService.getTasks());
+    }
+
+    @PostMapping
+    public ResponseEntity<String> addTask(@RequestParam String description) {
+        taskService.addTask(description);
+        return ResponseEntity.ok("Ok my dude, got you !");
     }
 }
